@@ -1,9 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { Check, Droplets } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
-
-
 
 const Services = () => {
     const { t, tArray } = useLanguage();
@@ -12,29 +10,28 @@ const Services = () => {
         {
             title: `4 ½ inch Bore`,
             price: `${t('services', 'price_start')} ₹80 ${t('services', 'per_ft')}`,
-            features: [
-                t('services', 'domestic'),
-                'Cost-Effective',
-                'Suitable for Soft/Medium Soil',
-                'Standard Casing Pipes',
-            ],
+            features: tArray('services', 'features_45'),
             highlight: false,
+            icon: <Droplets size={30} color="var(--primary-color)" />
         },
         {
             title: `6 ½ inch Bore`,
             price: `${t('services', 'price_start')} ₹110 ${t('services', 'per_ft')}`,
-            features: [
-                t('services', 'commercial'),
-                'High-Pressure Drilling',
-                'Deep Water Access',
-                'Heavy Duty Piping',
-            ],
+            features: tArray('services', 'features_65'),
             highlight: true,
+            icon: <Droplets size={30} color="var(--secondary-color)" />
+        },
+        {
+            title: t('services', 'pressing_title'),
+            price: t('services', 'pressing_desc'),
+            features: tArray('services', 'features_pressing'),
+            highlight: false,
+            icon: <Droplets size={30} color="var(--accent-color)" />
         }
     ];
 
     return (
-        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <h2 className="gradient-text" style={{ fontSize: '3rem', textAlign: 'center', marginBottom: '40px' }}>{t('services', 'title')}</h2>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px', justifyContent: 'center' }}>
@@ -45,10 +42,12 @@ const Services = () => {
                         style={{
                             padding: '40px',
                             flex: '1 1 300px',
-                            maxWidth: '400px',
+                            maxWidth: '380px',
                             border: plan.highlight ? '2px solid var(--secondary-color)' : '1px solid var(--glass-border)',
                             position: 'relative',
-                            background: plan.highlight ? 'rgba(236, 72, 153, 0.1)' : 'var(--glass-bg)'
+                            background: plan.highlight ? 'rgba(236, 72, 153, 0.1)' : 'var(--glass-bg)',
+                            display: 'flex',
+                            flexDirection: 'column'
                         }}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -62,6 +61,7 @@ const Services = () => {
                                 left: '50%',
                                 transform: 'translateX(-50%)',
                                 background: 'var(--secondary-color)',
+                                color: 'white',
                                 padding: '5px 15px',
                                 borderRadius: '20px',
                                 fontSize: '0.9rem',
@@ -69,14 +69,15 @@ const Services = () => {
                             }}>{t('services', 'most_popular')}</div>
                         )}
 
-                        <h3 style={{ fontSize: '2rem', marginTop: 0 }}>{plan.title}</h3>
-                        <p style={{ fontSize: '1.5rem', color: 'var(--primary-color)', fontWeight: 'bold' }}>{plan.price}</p>
+                        <div style={{ marginBottom: '20px' }}>{plan.icon}</div>
+                        <h3 style={{ fontSize: '1.8rem', marginTop: 0 }}>{plan.title}</h3>
+                        <p style={{ fontSize: '1.2rem', color: 'var(--primary-color)', fontWeight: 'bold', minHeight: '3rem' }}>{plan.price}</p>
 
-                        <ul style={{ listStyle: 'none', padding: 0, margin: '30px 0' }}>
+                        <ul style={{ listStyle: 'none', padding: 0, margin: '30px 0', flexGrow: 1 }}>
                             {plan.features.map((feature, i) => (
                                 <li key={i} style={{ display: 'flex', gap: '10px', marginBottom: '15px', alignItems: 'center' }}>
                                     <Check size={20} color="var(--accent-color)" />
-                                    <span style={{ color: 'var(--text-muted)' }}>{feature}</span>
+                                    <span style={{ color: 'var(--text-main)', opacity: 0.9 }}>{feature}</span>
                                 </li>
                             ))}
                         </ul>

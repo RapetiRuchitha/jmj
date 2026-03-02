@@ -29,7 +29,6 @@ const Navbar = () => {
     const navLinks = [
         { name: t('nav', 'home'), id: 'home' },
         { name: t('nav', 'plans'), id: 'services' },
-        { name: t('nav', 'estimator'), id: 'calculator' },
         { name: t('nav', 'location'), id: 'location' },
         { name: t('nav', 'about'), id: 'about' },
     ];
@@ -66,13 +65,14 @@ const Navbar = () => {
                 onClick={() => scrollToSection('home')}
             >
                 <img
-                    src="/images/logo.png"
+                    src="images/logo.png"
                     alt="JMJ Borewells"
-                    style={{ height: '100px', objectFit: 'contain' }}
+                    style={{ height: scrolled ? '60px' : '80px', objectFit: 'contain', transition: 'height 0.3s' }}
+                    className="nav-logo"
                 />
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
 
                 {/* Desktop Menu */}
                 <div className="desktop-menu" style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
@@ -202,6 +202,7 @@ const Navbar = () => {
         @media (max-width: 768px) {
           .desktop-menu { display: none !important; }
           .mobile-toggle { display: block; cursor: pointer; }
+          .nav-logo { height: 50px !important; }
         }
         @media (min-width: 769px) {
           .mobile-toggle { display: none; }

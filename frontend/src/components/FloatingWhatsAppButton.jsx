@@ -14,7 +14,7 @@ const FloatingWhatsAppButton = () => {
             whileTap={{ scale: 0.9 }}
             style={{
                 position: 'fixed',
-                bottom: '100px', // Above the call button
+                bottom: '180px', // Raised to be above call button and footer
                 right: '25px',
                 width: '60px',
                 height: '60px',
@@ -24,7 +24,7 @@ const FloatingWhatsAppButton = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 boxShadow: '0 4px 15px rgba(37, 211, 102, 0.4)',
-                zIndex: 1000,
+                zIndex: 2000,
                 cursor: 'pointer',
                 color: 'white'
             }}

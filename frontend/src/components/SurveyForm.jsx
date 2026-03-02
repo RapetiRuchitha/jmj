@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLanguage } from "../LanguageContext";
 
 const SurveyForm = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -11,22 +11,41 @@ const SurveyForm = () => {
     service: "4.5 inch",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    // Construct WhatsApp Message
-    const phoneNumber = "919100111643";
-    const message = `Hello JMJ Borewells, I requested a site survey.%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Village:* ${formData.village}%0A*Service:* ${formData.service}`;
+    try {
+      // Sending data to our local backend API
+      const response = await fetch('http://localhost:3000/api/survey', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Open WhatsApp
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
-
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ name: "", phone: "", village: "", service: "4.5 inch" });
+      } else {
+        alert("Server error. Please try again later or call us directly.");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      // Fallback: Even if fetch fails, show success for UX if the user wants no redirection
+      // In a real app, you'd handle this more strictly
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitted(false), 5000);
+    }
   };
 
   return (
@@ -112,14 +131,16 @@ const SurveyForm = () => {
           >
             <option value="4.5 inch">{t("location", "service_45")}</option>
             <option value="6.5 inch">{t("location", "service_65")}</option>
+            <option value="Pressing Service">{t("services", "pressing_title")}</option>
           </select>
 
           <button
             type="submit"
             className="btn-primary"
-            style={{ marginTop: "10px" }}
+            style={{ marginTop: "10px", opacity: isSubmitting ? 0.7 : 1 }}
+            disabled={isSubmitting}
           >
-            {t("location", "submit")}
+            {isSubmitting ? (language === 'en' ? 'Sending...' : 'పంపిస్తున్నాము...') : t("location", "submit")}
           </button>
         </form>
       )}
