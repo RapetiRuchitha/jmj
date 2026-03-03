@@ -1,0 +1,51 @@
+.wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.infoPanel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+}
+
+.title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    margin-bottom: var(--space-5);
+    background: linear-gradient(135deg, #c084fc, #6366f1, #06b6d4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.addressRow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+}
+
+.addressIcon {
+    color: var(--color-accent);
+    flex-shrink: 0;
+}
+
+.mapPanel {
+    composes: infoPanel;
+    flex: 1;
+    padding: var(--space-3);
+    min-height: 320px;
+}
+
+.mapFrame {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: var(--radius-lg);
+    min-height: 300px;
+}

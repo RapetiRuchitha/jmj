@@ -1,0 +1,177 @@
+.wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: var(--space-4);
+    background: linear-gradient(135deg, #c084fc, #6366f1, #06b6d4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    border-radius: var(--radius-full);
+    margin: 0 auto var(--space-12);
+}
+
+/* ---- Pricing Cards ---- */
+.plansRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+    justify-content: center;
+}
+
+.planCard {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    padding: var(--space-10);
+    flex: 1 1 300px;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+.planCard:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--border-accent);
+}
+
+.planHighlight {
+    composes: planCard;
+    border-color: var(--color-accent);
+    background: rgba(6, 182, 212, 0.05);
+}
+
+.popularBadge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    color: white;
+    padding: var(--space-1) var(--space-5);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.planIcon {
+    margin-bottom: var(--space-5);
+    color: var(--color-primary-light);
+}
+
+.planTitle {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.planPrice {
+    font-size: var(--font-size-base);
+    color: var(--color-primary-light);
+    font-weight: 600;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+.featureList {
+    margin: var(--space-8) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    flex-grow: 1;
+}
+
+.featureItem {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.featureIcon {
+    color: var(--color-accent);
+    flex-shrink: 0;
+}
+
+.selectBtn {
+    width: 100%;
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    color: white;
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: 0 4px 15px var(--color-primary-glow);
+}
+
+.selectBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--color-primary-glow);
+}
+
+/* ---- Comparison Table ---- */
+.tableWrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    padding: var(--space-10);
+    margin-top: var(--space-16);
+    overflow-x: auto;
+}
+
+.tableTitle {
+    composes: title;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    margin-bottom: var(--space-8);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+}
+
+.table thead tr {
+    border-bottom: 2px solid var(--border-medium);
+}
+
+.table th {
+    padding: var(--space-5);
+    text-align: left;
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.table td {
+    padding: var(--space-5);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.table td:first-child {
+    font-weight: 600;
+    color: var(--color-primary-light);
+}

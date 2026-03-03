@@ -4,72 +4,54 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import Location from './pages/Location';
 import About from './pages/About';
-import FloatingCallButton from './components/FloatingCallButton';
-import FloatingWhatsAppButton from './components/FloatingWhatsAppButton';
+import Faq from './components/Faq';
+import { FloatingCallButton, FloatingWhatsAppButton } from './components/FloatingButtons';
 import SurveyForm from './components/SurveyForm';
 import Footer from './components/Footer';
 import { LanguageProvider } from './LanguageContext';
+import s from './App.module.css';
 
 function App() {
     return (
         <LanguageProvider>
-            <div style={{ overflowX: 'hidden' }}>
+            <div className={s.app}>
+                <a href="#main" className="skip-link">Skip to main content</a>
                 <Navbar />
                 <FloatingCallButton />
                 <FloatingWhatsAppButton />
 
-                <div className="main-container">
+                <main id="main" className={s.main}>
                     {/* Home Section */}
-                    <section id="home">
-                        <Home />
-                    </section>
+                    <Home />
 
                     {/* Services Section */}
-                    <section
-                        id="services"
-                        style={{
-                            background: 'linear-gradient(180deg, transparent, rgba(99, 102, 241, 0.05), transparent)'
-                        }}
-                    >
+                    <section id="services" className={s.servicesSection}>
                         <Services />
                     </section>
 
                     {/* Location & Contact Section */}
-                    <section
-                        id="location"
-                        style={{
-                            background: 'linear-gradient(180deg, transparent, rgba(236, 72, 153, 0.05), transparent)',
-                            padding: '60px 5%'
-                        }}
-                    >
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                            gap: '30px'
-                        }}>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                    <section id="location" className={s.contactSection}>
+                        <div className={s.contactGrid}>
+                            <div className={s.contactCol}>
                                 <Location />
                             </div>
-
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                            <div className={s.contactCol}>
                                 <SurveyForm />
                             </div>
                         </div>
                     </section>
 
                     {/* About Section */}
-                    <section
-                        id="about"
-                        style={{
-                            background: 'linear-gradient(180deg, transparent, rgba(139, 92, 246, 0.05), transparent)',
-                            paddingBottom: '150px'
-                        }}
-                    >
+                    <section id="about" className={s.aboutSection}>
                         <About />
                     </section>
-                </div>
 
-                {/* Footer */}
+                    {/* FAQ Section */}
+                    <section id="faq" className={s.faqSection}>
+                        <Faq />
+                    </section>
+                </main>
+
                 <Footer />
             </div>
         </LanguageProvider>

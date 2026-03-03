@@ -1,0 +1,56 @@
+.btn {
+    position: fixed;
+    z-index: var(--z-floating);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    border: none;
+    transition: transform var(--transition-fast);
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.callBtn {
+    composes: btn;
+    bottom: 90px;
+    right: 20px;
+    background: var(--color-success);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.whatsappBtn {
+    composes: btn;
+    bottom: 155px;
+    right: 20px;
+    background: #25D366;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+
+@media (max-width: 768px) {
+    .btn {
+        width: 46px;
+        height: 46px;
+    }
+
+    .callBtn {
+        bottom: 80px;
+        right: 14px;
+    }
+
+    .whatsappBtn {
+        bottom: 140px;
+        right: 14px;
+    }
+}

@@ -14,7 +14,6 @@ export const LanguageProvider = ({ children }) => {
         }
     };
 
-    // Helper for arrays (like features lists)
     const tArray = (section, key) => {
         try {
             return translations[language][section][key] || [];

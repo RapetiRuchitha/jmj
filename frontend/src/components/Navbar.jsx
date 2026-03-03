@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon, Languages } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
+import styles from './Navbar.module.css';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -10,20 +11,14 @@ const Navbar = () => {
     const { toggleLanguage, t, language } = useLanguage();
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
+        const handleScroll = () => setScrolled(window.scrollY > 50);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     const toggleTheme = () => {
         setIsDarkMode(!isDarkMode);
-        if (isDarkMode) {
-            document.body.classList.add('light-mode');
-        } else {
-            document.body.classList.remove('light-mode');
-        }
+        document.body.classList.toggle('light-mode', isDarkMode);
     };
 
     const navLinks = [
@@ -34,180 +29,61 @@ const Navbar = () => {
     ];
 
     const scrollToSection = (id) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-            setIsOpen(false);
-        }
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        setIsOpen(false);
     };
 
     return (
-        <nav
-            style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0,
-                zIndex: 1000,
-                padding: '15px 30px',
-                background: scrolled ? 'var(--nav-bg)' : 'transparent',
-                backdropFilter: scrolled ? 'blur(10px)' : 'none',
-                borderBottom: scrolled ? '1px solid var(--glass-border)' : 'none',
-                transition: 'all 0.3s ease',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                color: 'var(--text-main)'
-            }}
-        >
-            <div
-                style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
-                onClick={() => scrollToSection('home')}
-            >
-                <img
-                    src="images/logo.png"
-                    alt="JMJ Borewells"
-                    style={{ height: scrolled ? '60px' : '80px', objectFit: 'contain', transition: 'height 0.3s' }}
-                    className="nav-logo"
-                />
+        <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`}>
+            <div className={styles.logo} onClick={() => scrollToSection('home')}>
+                <img src="images/logo.png" alt="JMJ Borewells" className={styles.logoImg} />
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-
+            <div className={styles.right}>
                 {/* Desktop Menu */}
-                <div className="desktop-menu" style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+                <div className={styles.desktopMenu}>
                     {navLinks.map((link) => (
-                        <button
-                            key={link.id}
-                            onClick={() => scrollToSection(link.id)}
-                            style={{
-                                background: 'none',
-                                border: 'none',
-                                color: 'var(--text-main)',
-                                fontSize: '1rem',
-                                cursor: 'pointer',
-                                fontWeight: 500,
-                                padding: '8px 16px',
-                                borderRadius: '8px',
-                                transition: 'background 0.2s'
-                            }}
-                            onMouseEnter={(e) => e.target.style.background = 'var(--glass-bg)'}
-                            onMouseLeave={(e) => e.target.style.background = 'transparent'}
-                        >
+                        <button key={link.id} className={styles.navLink} onClick={() => scrollToSection(link.id)}>
                             {link.name}
                         </button>
                     ))}
                 </div>
 
                 {/* Language Toggle */}
-                <button
-                    onClick={toggleLanguage}
-                    style={{
-                        background: 'var(--glass-bg)',
-                        border: '1px solid var(--glass-border)',
-                        color: 'var(--text-main)',
-                        padding: '8px 12px',
-                        borderRadius: '20px',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '5px',
-                        fontWeight: 'bold',
-                        fontSize: '0.9rem'
-                    }}
-                    title="Switch Language"
-                >
-                    <Languages size={18} />
+                <button onClick={toggleLanguage} className={styles.toggleBtn} aria-label="Switch language" title="Switch Language">
+                    <Languages size={16} />
                     {language === 'en' ? 'TE' : 'EN'}
                 </button>
 
-                {/* Theme Toggle Icon */}
-                <button
-                    onClick={toggleTheme}
-                    style={{
-                        background: 'var(--glass-bg)',
-                        border: '1px solid var(--glass-border)',
-                        color: 'var(--text-main)',
-                        padding: '8px',
-                        borderRadius: '50%',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        transition: 'transform 0.2s'
-                    }}
-                    onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
-                    onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
-                    title="Toggle Theme"
-                >
-                    {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+                {/* Theme Toggle */}
+                <button onClick={toggleTheme} className={styles.themeBtn} aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'} title="Toggle Theme">
+                    {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
                 </button>
 
-                {/* Mobile Menu Toggle */}
-                <div className="mobile-toggle" onClick={() => setIsOpen(!isOpen)} style={{ color: 'var(--text-main)' }}>
-                    {isOpen ? <X size={28} /> : <Menu size={28} />}
+                {/* Mobile Toggle */}
+                <div className={styles.mobileToggle} onClick={() => setIsOpen(!isOpen)}>
+                    {isOpen ? <X size={26} /> : <Menu size={26} />}
                 </div>
-
             </div>
 
-            {/* Mobile Menu Dropdown */}
+            {/* Mobile Dropdown */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9, y: -20 }}
+                        className={styles.mobileMenu}
+                        initial={{ opacity: 0, scale: 0.95, y: -10 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9, y: -20 }}
-                        style={{
-                            position: 'absolute',
-                            top: '80px',
-                            right: '20px',
-                            background: 'var(--card-bg)',
-                            backdropFilter: 'blur(15px)',
-                            padding: '20px',
-                            borderRadius: '16px',
-                            border: '1px solid var(--glass-border)',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '15px',
-                            minWidth: '220px',
-                            boxShadow: '0 10px 25px rgba(0,0,0,0.2)'
-                        }}
+                        exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                        transition={{ duration: 0.15 }}
                     >
                         {navLinks.map((link) => (
-                            <button
-                                key={link.id}
-                                onClick={() => scrollToSection(link.id)}
-                                style={{
-                                    background: 'none',
-                                    border: 'none',
-                                    color: 'var(--text-main)',
-                                    fontSize: '1.1rem',
-                                    textAlign: 'left',
-                                    cursor: 'pointer',
-                                    padding: '12px',
-                                    borderRadius: '8px',
-                                    transition: 'background 0.2s'
-                                }}
-                                onMouseEnter={(e) => e.target.style.background = 'var(--glass-bg)'}
-                                onMouseLeave={(e) => e.target.style.background = 'transparent'}
-                            >
+                            <button key={link.id} className={styles.mobileLink} onClick={() => scrollToSection(link.id)}>
                                 {link.name}
                             </button>
                         ))}
                     </motion.div>
                 )}
             </AnimatePresence>
-
-            <style>{`
-        @media (max-width: 768px) {
-          .desktop-menu { display: none !important; }
-          .mobile-toggle { display: block; cursor: pointer; }
-          .nav-logo { height: 50px !important; }
-        }
-        @media (min-width: 769px) {
-          .mobile-toggle { display: none; }
-        }
-      `}</style>
         </nav>
     );
 };

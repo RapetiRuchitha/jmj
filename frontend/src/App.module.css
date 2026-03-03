@@ -1,0 +1,50 @@
+.app {
+    overflow-x: hidden;
+}
+
+.main {
+    width: 100%;
+}
+
+.contactSection {
+    padding: var(--section-padding);
+}
+
+.contactGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-8);
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.contactCol {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.servicesSection {
+    padding: var(--section-padding);
+    background: linear-gradient(180deg, transparent, rgba(79, 70, 229, 0.02), transparent);
+}
+
+.aboutSection {
+    padding: var(--section-padding);
+    background: linear-gradient(180deg, transparent, rgba(6, 182, 212, 0.02), transparent);
+    padding-bottom: var(--space-24);
+}
+
+.faqSection {
+    padding: var(--section-padding);
+}
+
+@media (max-width: 768px) {
+
+    .contactSection,
+    .servicesSection,
+    .aboutSection,
+    .faqSection {
+        padding: var(--space-16) 5%;
+    }
+}
