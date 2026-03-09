@@ -19,6 +19,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    will-change: transform;
 }
 
 .overlay {
@@ -138,6 +139,51 @@
     background: white;
     width: 24px;
     border-radius: var(--radius-full);
+}
+
+/* Carousel Arrow Controls */
+.carouselArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    opacity: 0;
+}
+
+.hero:hover .carouselArrow {
+    opacity: 1;
+}
+
+.carouselArrow:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.carouselArrow:focus-visible {
+    opacity: 1;
+    outline: 2px solid var(--color-primary-light);
+    outline-offset: 2px;
+}
+
+.carouselArrowLeft {
+    left: var(--space-6);
+}
+
+.carouselArrowRight {
+    right: var(--space-6);
 }
 
 /* ---- Section Shared ---- */
@@ -377,6 +423,7 @@
     padding: var(--space-6);
     opacity: 0;
     transition: opacity var(--transition-base);
+    will-change: opacity;
 }
 
 .galleryItem:hover .galleryOverlay {
@@ -648,6 +695,67 @@
     line-height: 1.7;
 }
 
+/* ---- Water Tips ---- */
+.tipsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+    text-align: left;
+}
+
+.tipCard {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.tipCard::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+    border-radius: 4px 0 0 4px;
+}
+
+.tipCard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--border-accent);
+}
+
+.tipIcon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(79, 70, 229, 0.1);
+    color: var(--color-primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+}
+
+.tipTitle {
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.tipDesc {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
 /* ---- Responsive overrides ---- */
 @media (max-width: 768px) {
     .missionGrid {
@@ -665,5 +773,162 @@
 
     .section {
         padding: var(--space-16) 5%;
+    }
+
+    .carouselArrow {
+        width: 40px;
+        height: 40px;
+        opacity: 0.7;
+    }
+
+    .hero:hover .carouselArrow {
+        opacity: 1;
+    }
+
+    .carouselArrowLeft {
+        left: var(--space-3);
+    }
+
+    .carouselArrowRight {
+        right: var(--space-3);
+    }
+}
+
+/* ---- Gallery Lightbox ---- */
+.galleryZoom {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    color: white;
+    z-index: 2;
+}
+
+.galleryItem:hover .galleryZoom {
+    opacity: 0.8;
+}
+
+.lightboxOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.lightboxClose {
+    position: absolute;
+    top: var(--space-6);
+    right: var(--space-6);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    z-index: 2;
+}
+
+.lightboxClose:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.lightboxImg {
+    max-width: 85vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 16px 64px rgba(0, 0, 0, 0.5);
+    cursor: default;
+}
+
+.lightboxArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    z-index: 2;
+}
+
+.lightboxArrow:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.lightboxArrowLeft {
+    left: var(--space-6);
+}
+
+.lightboxArrowRight {
+    right: var(--space-6);
+}
+
+.lightboxCaption {
+    position: absolute;
+    bottom: var(--space-8);
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    cursor: default;
+}
+
+.lightboxCaption h4 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    margin-bottom: var(--space-1);
+}
+
+.lightboxCaption p {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+    .lightboxImg {
+        max-width: 95vw;
+        max-height: 70vh;
+    }
+
+    .lightboxArrow {
+        width: 40px;
+        height: 40px;
+    }
+
+    .lightboxArrowLeft {
+        left: var(--space-3);
+    }
+
+    .lightboxArrowRight {
+        right: var(--space-3);
+    }
+
+    .lightboxClose {
+        top: var(--space-4);
+        right: var(--space-4);
+        width: 40px;
+        height: 40px;
     }
 }

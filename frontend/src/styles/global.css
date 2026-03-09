@@ -97,3 +97,63 @@ ol {
 .skip-link:focus {
     top: var(--space-4);
 }
+
+/* ---- Reduced Motion (Accessibility) ---- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* ---- Print Styles ---- */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+    }
+
+    nav,
+    .skip-link,
+    button,
+    iframe,
+    video {
+        display: none !important;
+    }
+
+    a[href]::after {
+        content: ' (' attr(href) ')';
+        font-size: 10pt;
+        color: #555;
+    }
+
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid;
+    }
+
+    h1, h2, h3, h4 {
+        page-break-after: avoid;
+        color: black !important;
+        -webkit-text-fill-color: black !important;
+        background: none !important;
+    }
+
+    section {
+        page-break-inside: avoid;
+    }
+
+    footer {
+        border-top: 1px solid #ccc;
+        padding-top: 1rem;
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "name": "JMJ Borewells — Precision Borewell Drilling",
+    "short_name": "JMJ Borewells",
+    "description": "Expert 4.5\" & 6.5\" borewell drilling and pressing services in Vizag region. 25+ years experience.",
+    "start_url": "/jmj/",
+    "display": "standalone",
+    "background_color": "#0b1120",
+    "theme_color": "#4f46e5",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/jmj/images/logo.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/jmj/images/logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": ["business", "utilities"]
+}

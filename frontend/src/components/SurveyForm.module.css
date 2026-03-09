@@ -27,6 +27,12 @@
     gap: var(--space-4);
 }
 
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
 .input {
     padding: var(--space-4);
     border-radius: var(--radius-md);
@@ -46,6 +52,17 @@
 
 .input::placeholder {
     color: var(--text-muted);
+}
+
+.inputError {
+    border-color: var(--color-danger) !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+
+.errorText {
+    font-size: var(--font-size-xs);
+    color: var(--color-danger);
+    padding-left: var(--space-1);
 }
 
 .select {
@@ -98,4 +115,8 @@
     font-weight: 600;
     font-size: var(--font-size-sm);
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
 }

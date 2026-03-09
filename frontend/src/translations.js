@@ -46,6 +46,12 @@ export const translations = {
                 { title: 'Precision 4.5" Bore', desc: 'Perfect for domestic use' },
                 { title: 'Advanced Survey', desc: 'Scientific water detection' }
             ],
+            tips_title: 'Water Care Tips',
+            water_tips: [
+                { title: 'Regular Maintenance', desc: 'Schedule borewell flushing (pressing) every 2-3 years to prevent sediment build-up and maintain optimal water flow.' },
+                { title: 'Water Quality Testing', desc: 'Test your borewell water annually for mineral content, pH levels, and bacterial contamination to ensure safe usage.' },
+                { title: 'Seasonal Monitoring', desc: 'Monitor water levels during summer months. If yield drops significantly, contact us for a professional assessment before the bore dries out.' }
+            ],
             faq_title: 'Expert Knowledge Base',
             faqs: [
                 { q: 'What is the standard diameter for domestic borewells?', a: 'For individual houses, 4.5" is most common. For apartments or high-yield needs like agriculture, 6.5" is recommended.' },
@@ -115,6 +121,17 @@ export const translations = {
                 'Advanced Water Recovery (Pressing) Experts',
                 'Scientific Water Source Detection (Sensor Survey)',
                 'Transparent & Competitive Pricing'
+            ],
+            founder_name: 'Dadi Santhosh Kumar',
+            founder_role: 'Founder & Lead Drilling Expert',
+            founder_message: 'For over 25 years, my mission has been simple — bring reliable water to every family and farmer in our region. What started as a small drilling operation in Chodavaram has grown into a trusted name across the Vizag region. Every bore we drill carries our family\'s reputation.',
+            timeline_title: 'Our Journey',
+            milestones: [
+                { year: '1998', title: 'Company Founded', desc: 'JMJ Borewells established in Chodavaram with a single drilling rig and a vision for reliable water solutions.' },
+                { year: '2005', title: 'Pressing Technology', desc: 'Introduced advanced borewell pressing services, becoming one of the first in the region to offer water recovery.' },
+                { year: '2012', title: '5000+ Bores Milestone', desc: 'Crossed 5,000 successful borewells drilled across Andhra Pradesh with a consistently high success rate.' },
+                { year: '2020', title: 'Modern Fleet Upgrade', desc: 'Upgraded to latest DTH rigs and scientific sensor survey equipment for precision water detection.' },
+                { year: '2024', title: '10,000+ Bores & Growing', desc: 'Serving 4 states with over 10,000 successful borewells and a dedicated team of experienced professionals.' }
             ]
         }
     },
@@ -164,6 +181,12 @@ export const translations = {
                 { title: '6.5" ఇండస్ట్రియల్ బోర్', desc: 'ఎక్కువ నీటి ప్రవాహం' },
                 { title: '4.5" ప్రెసిషన్ బోర్', desc: 'ఇంటి అవసరాలకు ప్రత్యేకం' },
                 { title: 'అధునాతన సర్వే', desc: 'నీటి జాడను గుర్తించడం' }
+            ],
+            tips_title: 'నీటి సంరక్షణ చిట్కాలు',
+            water_tips: [
+                { title: 'క్రమ నిర్వహణ', desc: 'ప్రతి 2-3 ఏళ్లకు ఒకసారి బోర్‌వెల్ ప్రెస్సింగ్ చేయించండి. ఇసుక మరియు బురద పేరుకుపోకుండా నీటి ప్రవాహాన్ని మెరుగుపరచవచ్చు.' },
+                { title: 'నీటి నాణ్యత పరీక్ష', desc: 'ప్రతి సంవత్సరం మీ బోర్ నీటిని మినరల్స్, pH స్థాయిలు మరియు బ్యాక్టీరియా కోసం పరీక్షించి సురక్షితంగా ఉపయోగించండి.' },
+                { title: 'సీజనల్ పర్యవేక్షణ', desc: 'వేసవిలో నీటి స్థాయిలను గమనించండి. నీరు గణనీయంగా తగ్గితే, బోర్ ఎండిపోకముందే మా నిపుణులను సంప్రదించండి.' }
             ],
             faq_title: 'ముఖ్యమైన సమాచారం (FAQs)',
             faqs: [
@@ -234,6 +257,17 @@ export const translations = {
                 'నీటి రికవరీ (ప్రెస్సింగ్) లో ప్రత్యేక నిపుణులు',
                 'సైంటిఫిక్ వాటర్ సెన్సార్ సర్వే',
                 'పారదర్శకమైన మరియు సరసమైన ధరలు'
+            ],
+            founder_name: 'దాడి సంతోష్ కుమార్',
+            founder_role: 'వ్యవస్థాపకుడు & ప్రధాన డ్రిల్లింగ్ నిపుణుడు',
+            founder_message: '25 ఏళ్లకు పైగా, మా ప్రాంతంలోని ప్రతి కుటుంబానికి మరియు రైతుకు నమ్మకమైన నీటిని అందించడమే నా లక్ష్యం. చోడవరంలో ఒక చిన్న డ్రిల్లింగ్ యూనిట్‌గా మొదలైన ఈ ప్రయాణం, ఇప్పుడు విశాఖ ప్రాంతం మొత్తంలో నమ్మకమైన పేరుగా ఎదిగింది. మేము వేసే ప్రతి బోర్ మా కుటుంబ ప్రతిష్ఠను ప్రతిబింబిస్తుంది.',
+            timeline_title: 'మా ప్రయాణం',
+            milestones: [
+                { year: '1998', title: 'సంస్థ స్థాపన', desc: 'ఒకే డ్రిల్లింగ్ రిగ్‌తో చోడవరంలో JMJ బోర్ వెల్స్ స్థాపించబడింది.' },
+                { year: '2005', title: 'ప్రెస్సింగ్ టెక్నాలజీ', desc: 'ఈ ప్రాంతంలో మొదటిసారిగా అధునాతన బోర్‌వెల్ ప్రెస్సింగ్ సేవలు ప్రారంభించాము.' },
+                { year: '2012', title: '5000+ బోర్ల మైలురాయి', desc: 'ఆంధ్రప్రదేశ్ అంతటా 5,000 కు పైగా విజయవంతమైన బోర్‌వెల్స్ పూర్తి చేశాము.' },
+                { year: '2020', title: 'ఆధునిక యంత్రాల అప్‌గ్రేడ్', desc: 'తాజా DTH రిగ్స్ మరియు సైంటిఫిక్ సెన్సార్ సర్వే పరికరాలకు అప్‌గ్రేడ్ చేశాము.' },
+                { year: '2024', title: '10,000+ బోర్లు & అభివృద్ధి', desc: '4 రాష్ట్రాల్లో 10,000 కు పైగా విజయవంతమైన బోర్‌వెల్స్‌తో సేవలు అందిస్తున్నాము.' }
             ]
         }
     }
