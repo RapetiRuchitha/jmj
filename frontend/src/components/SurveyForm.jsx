@@ -71,28 +71,26 @@ const SurveyForm = () => {
                 ? (language === 'en' ? '6.5 Inch (Heavy Duty)' : '6.5 \u0C05\u0C02\u0C17\u0C41\u0C33\u0C3E\u0C32\u0C41 (\u0C35\u0C4D\u0C2F\u0C35\u0C38\u0C3E\u0C2F\u0C02)')
                 : (language === 'en' ? 'Borewell Pressing' : '\u0C2C\u0C4B\u0C30\u0C4D\u200C\u0C35\u0C46\u0C32\u0C4D \u0C2A\u0C4D\u0C30\u0C46\u0C38\u0C4D\u0C38\u0C3F\u0C02\u0C17\u0C4D');
 
-        // Build message as array of lines — real \n via join(), no encoding issues
-        // Using plain text + WhatsApp bold (*text*) — guaranteed on all devices
         const lines = language === 'en'
             ? [
-                '*---- NEW BOREWELL SURVEY REQUEST ----*',
+                '💧 *New Borewell Survey Request*',
                 '',
-                '*Name      :* ' + formData.name,
-                '*Phone     :* ' + formData.phone,
-                '*Location  :* ' + formData.village,
-                '*Service   :* ' + serviceLabel,
+                '👤 *Name:* ' + formData.name,
+                '📱 *Phone:* ' + formData.phone,
+                '📍 *Village / Location:* ' + formData.village,
+                '🛠️ *Service Required:* ' + serviceLabel,
                 '',
-                '_Sent via JMJ Borewells website_'
+                '_Sent from the JMJ Borewells website_'
             ]
             : [
-                '*---- \u0C15\u0C4A\u0C24\u0C4D\u0C24 \u0C38\u0C30\u0C4D\u0C35\u0C47 \u0C30\u0C3F\u0C15\u0C4D\u0C35\u0C46\u0C38\u0C4D\u0C1F\u0C4D ----*',
+                '💧 *కొత్త బోర్‌వెల్ సర్వే రిక్వెస్ట్*',
                 '',
-                '*\u0C2A\u0C47\u0C30\u0C41     :* ' + formData.name,
-                '*\u0C2B\u0C4B\u0C28\u0C4D      :* ' + formData.phone,
-                '*\u0C17\u0C4D\u0C30\u0C3E\u0C2E\u0C02    :* ' + formData.village,
-                '*\u0C38\u0C47\u0C35     :* ' + serviceLabel,
+                '👤 *పేరు:* ' + formData.name,
+                '📱 *ఫోన్:* ' + formData.phone,
+                '📍 *గ్రామం / ప్రాంతం:* ' + formData.village,
+                '🛠️ *అవసరమైన సేవ:* ' + serviceLabel,
                 '',
-                '_JMJ Borewells \u0C35\u0C46\u0C2C\u0C4D\u200C\u0C38\u0C48\u0C1F\u0C4D \u0C26\u0C4D\u0C35\u0C3E\u0C30\u0C3E \u0C2A\u0C02\u0C2A\u0C2C\u0C21\u0C3F\u0C02\u0C26\u0C3F_'
+                '_JMJ Borewells వెబ్‌సైట్ నుండి పంపబడింది_'
             ];
 
         const message = lines.join('\n');

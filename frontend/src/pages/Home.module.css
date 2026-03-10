@@ -74,6 +74,7 @@
     position: fixed;
     top: calc(var(--space-16) + var(--space-6));
     left: 50%;
+    right: auto;
     transform: translateX(-50%);
     width: min(92vw, 640px);
     z-index: calc(var(--z-nav) + 1);
@@ -862,6 +863,15 @@
 }
 
 /* ---- Responsive overrides ---- */
+@media (min-width: 769px) {
+    .translatePromptWrap {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        width: min(92vw, 640px);
+    }
+}
+
 @media (max-width: 768px) {
     .translatePromptWrap {
         top: calc(var(--space-12) + var(--space-5));
