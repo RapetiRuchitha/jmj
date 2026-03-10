@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, ChevronRight, Clock, Facebook, Youtube, Shield, X } from 'lucide-react';
+import { MapPin, Phone, Mail, ChevronRight, Clock, Shield, X } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import s from './Footer.module.css';
 
@@ -24,14 +24,7 @@ const Footer = () => {
                             ? 'Leading borewell drilling company in Vizag region for over 25 years. Specializing in high-precision 4.5" and 6.5" drilling services.'
                             : 'విశాఖ రీజియన్‌లో 25 ఏళ్లుగా నమ్మకమైన బోర్‌వెల్ సేవలందిస్తున్నాము. 4.5" మరియు 6.5" డ్రిల్లింగ్‌లో మాకు సాటి ఎవరూ లేరు.'}
                     </p>
-                    <div className={s.socialRow}>
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={s.socialLink} aria-label="Follow us on Facebook" title="Facebook">
-                            <Facebook size={18} />
-                        </a>
-                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className={s.socialLink} aria-label="Watch our projects on YouTube" title="YouTube">
-                            <Youtube size={18} />
-                        </a>
-                    </div>
+                    <div className={s.socialRow}></div>
                 </div>
 
                 {/* Quick Links */}
@@ -70,7 +63,7 @@ const Footer = () => {
                     </div>
                     <div className={s.contactItem}>
                         <Phone size={18} className={s.contactIcon} />
-                        <a href="tel:+916281656684" className={s.contactLink}>+91 62816 56684</a>
+                        <a href="tel:+919100111643" className={s.contactLink}>+91 91001 11643</a>
                     </div>
                     <div className={s.contactItem}>
                         <Mail size={18} className={s.contactIcon} />
@@ -119,7 +112,7 @@ const Footer = () => {
                                     <h4>Data Security</h4>
                                     <p>We take reasonable measures to protect your personal information from unauthorized access, alteration, or disclosure.</p>
                                     <h4>Contact</h4>
-                                    <p>For questions about this policy, contact us at <strong>jmjborewell@gmail.com</strong> or call <strong>+91 62816 56684</strong>.</p>
+                                    <p>For questions about this policy, contact us at <strong>jmjborewell@gmail.com</strong> or call <strong>+91 91001 11643</strong>.</p>
                                 </>
                             ) : (
                                 <>
@@ -131,7 +124,7 @@ const Footer = () => {
                                     <h4>డేటా భద్రత</h4>
                                     <p>మీ వ్యక్తిగత సమాచారాన్ని అనధికార యాక్సెస్ నుండి రక్షించడానికి మేము సహేతుక చర్యలు తీసుకుంటాము.</p>
                                     <h4>సంప్రదించండి</h4>
-                                    <p>ఈ విధానం గురించి ప్రశ్నలకు, <strong>jmjborewell@gmail.com</strong> లేదా <strong>+91 62816 56684</strong>కు కాల్ చేయండి.</p>
+                                    <p>ఈ విధానం గురించి ప్రశ్నలకు, <strong>jmjborewell@gmail.com</strong> లేదా <strong>+91 91001 11643</strong>కు కాల్ చేయండి.</p>
                                 </>
                             )}
                         </div>

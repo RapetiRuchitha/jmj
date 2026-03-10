@@ -128,7 +128,7 @@ export const translations = {
                 'Transparent & Competitive Pricing'
             ],
             founder_name: 'Dadi Santhosh Kumar',
-            founder_role: 'Founder & Lead Drilling Expert',
+            founder_role: 'Founder',
             founder_message: 'For over 25 years, my mission has been simple — bring reliable water to every family and farmer in our region. What started as a small drilling operation in Chodavaram has grown into a trusted name across the Vizag region. Every bore we drill carries our family\'s reputation.',
             timeline_title: 'Our Journey',
             milestones: [

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle, Trophy, ChevronDown, ChevronUp, Quote, Star, Camera, ChevronLeft, ChevronRight, Droplets, Lightbulb, ShieldCheck, X, ZoomIn } from 'lucide-react';
+import { CheckCircle, Trophy, ChevronDown, ChevronUp, Quote, Star, Camera, ChevronLeft, ChevronRight, Droplets, Lightbulb, ShieldCheck, X, ZoomIn, Languages } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import s from './Home.module.css';
 
@@ -69,13 +69,14 @@ const StatCard = ({ stat, index }) => {
 };
 
 const Home = () => {
-    const { t, tArray, language } = useLanguage();
+    const { t, tArray, language, setLanguage } = useLanguage();
     const [openFaq, setOpenFaq] = useState(null);
     const [activeTestimonial, setActiveTestimonial] = useState(0);
     const [slideIndex, setSlideIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const [slideDirection, setSlideDirection] = useState(1);
     const [lightboxIndex, setLightboxIndex] = useState(null);
+    const [showTranslatePrompt, setShowTranslatePrompt] = useState(language === 'te');
 
     const testimonials = tArray('home', 'testimonials');
     const faqs = tArray('home', 'faqs');
@@ -128,10 +129,60 @@ const Home = () => {
         };
     }, [lightboxIndex]);
 
+    useEffect(() => {
+        if (!showTranslatePrompt) return undefined;
+
+        const timer = setTimeout(() => {
+            setShowTranslatePrompt(false);
+        }, 30000);
+
+        return () => clearTimeout(timer);
+    }, [showTranslatePrompt]);
+
     const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    const handleTranslatePrompt = () => {
+        setLanguage('en');
+        setShowTranslatePrompt(false);
+    };
 
     return (
         <div>
+            <AnimatePresence>
+                {showTranslatePrompt && language === 'te' && (
+                    <motion.div
+                        className={s.translatePromptWrap}
+                        initial={{ opacity: 0, y: -24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -24 }}
+                        transition={{ duration: 0.25 }}
+                    >
+                        <div className={s.translatePrompt} role="dialog" aria-live="polite" aria-label="Translation suggestion">
+                            <div className={s.translatePromptContent}>
+                                <div className={s.translatePromptIcon}>
+                                    <Languages size={18} />
+                                </div>
+                                <div>
+                                    <p className={s.translatePromptTitle}>Translate this page to English?</p>
+                                    <p className={s.translatePromptText}>You can switch the page language instantly.</p>
+                                </div>
+                            </div>
+                            <div className={s.translatePromptActions}>
+                                <button className={s.translatePromptButton} onClick={handleTranslatePrompt}>
+                                    Translate
+                                </button>
+                                <button
+                                    className={s.translatePromptClose}
+                                    onClick={() => setShowTranslatePrompt(false)}
+                                    aria-label="Close translation suggestion"
+                                >
+                                    <X size={18} />
+                                </button>
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             {/* ===== HERO ===== */}
             <section className={s.hero} id="home" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
                 <div className={s.sliderBg}>

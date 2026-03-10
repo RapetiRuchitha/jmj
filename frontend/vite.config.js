@@ -5,6 +5,7 @@ export default defineConfig({
     plugins: [react()],
     base: '/jmj/',
     server: {
+        host: true,
         port: 2005
     }
 })
