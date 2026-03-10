@@ -37,7 +37,10 @@ export const translations = {
             testimonials: [
                 { name: 'K. Rama Rao', role: 'Farmer, Visakhapatnam', text: 'JMJ Borewells solved my water problem after two other contractors failed. Their 6.5" deep drilling reached the water source exactly where they predicted.', stars: 5 },
                 { name: 'Srinivas V.', role: 'Home Owner, Chodavaram', text: 'Highly professional team. They completed the 4.5" bore for my new house in one day with zero mess. Very transparent pricing.', stars: 5 },
-                { name: 'B. Appala Naidu', role: 'Industrial Site Manager', text: 'Their "Pressing" technology is a life saver. Our old industrial bore was dry, but they revived it to full capacity. Saved us lakhs!', stars: 5 }
+                { name: 'B. Appala Naidu', role: 'Industrial Site Manager', text: 'Their "Pressing" technology is a life saver. Our old industrial bore was dry, but they revived it to full capacity. Saved us lakhs!', stars: 5 },
+                { name: 'P. Lakshmi Devi', role: 'House Owner, Narsipatnam', text: 'Got a 4.5" bore for our newly built home. Water was struck at 280 feet. The crew was polite and finished the work neatly. Only minor delay due to rocky ground, but overall very satisfied.', stars: 4 },
+                { name: 'Ch. Venkateswara Rao', role: 'Farmer, Anakapalle District', text: 'We needed a 6.5" high-yield bore for our paddy fields. JMJ\'s team did a scientific survey first and guaranteed a good water source. After drilling 420 feet, we got excellent yield. Our entire farm is now irrigated round the year!', stars: 5 },
+                { name: 'G. Suresh Babu', role: 'Apartment Builder, Chodavaram', text: 'Installed a 4.5" bore for our 3-floor apartment complex. The team handled the tight space between the buildings perfectly with their compact rig. Water quality is excellent. Will definitely call JMJ for our next project.', stars: 5 }
             ],
             gallery_title: 'Our Recent Work',
             gallery: [
@@ -108,7 +111,9 @@ export const translations = {
             service_45: '4.5 Inch (Residential)',
             service_65: '6.5 Inch (Heavy Duty)',
             submit: 'Submit Request',
-            success: 'Thank you! Our technical team will contact you shortly.'
+            success: 'Thank you! Our technical team will contact you shortly.',
+            address: 'Ramanyapeta, Near RCM Church, Chodavaram, Anakapalle District, 531036',
+            map_link: 'https://maps.app.goo.gl/Fr11MN8xi2qrP1YH7'
         },
         about: {
             title: 'About JMJ Borewells',
@@ -173,7 +178,10 @@ export const translations = {
             testimonials: [
                 { name: 'కె. రామారావు', role: 'రైతు, విశాఖపట్నం', text: 'ఇద్దరు కాంట్రాక్టర్లు విఫలమైన చోట JMJ బోర్ వెల్స్ మా నీటి సమస్యను తీర్చారు. వారు చెప్పిన చోటే నీరు పడింది.', stars: 5 },
                 { name: 'శ్రీనివాస్ వి.', role: 'గృహ యజమాని, చోడవరం', text: 'చాలా ప్రొఫెషనల్ టీమ్. నా కొత్త ఇంటి కోసం 4.5" బోర్ ఒకే రోజులో పూర్తి చేశారు. పారదర్శకమైన ధరలు.', stars: 5 },
-                { name: 'బి. అప్పలనాయుడు', role: 'ఇండస్ట్రియల్ మేనేజర్', text: 'వీరి "ప్రెస్సింగ్" టెక్నాలజీ అద్భుతం. ఎండిపోయిన మా పాత బోర్ లో తిరిగి నీటిని తెప్పించారు. మాకు లక్షల రూపాయలు ఆదా అయ్యాయి.', stars: 5 }
+                { name: 'బి. అప్పలనాయుడు', role: 'ఇండస్ట్రియల్ మేనేజర్', text: 'వీరి "ప్రెస్సింగ్" టెక్నాలజీ అద్భుతం. ఎండిపోయిన మా పాత బోర్ లో తిరిగి నీటిని తెప్పించారు. మాకు లక్షల రూపాయలు ఆదా అయ్యాయి.', stars: 5 },
+                { name: 'పి. లక్ష్మీ దేవి', role: 'గృహ యజమాని, నర్సీపట్నం', text: 'మా కొత్తగా కట్టిన ఇంటికి 4.5" బోర్ వేయించాము. 280 అడుగులకే నీరు పడింది. టీమ్ చాలా మర్యాదగా వ్యవహరించారు. రాతి నేల వల్ల కొంత ఆలస్యమైంది కానీ మొత్తంగా సంతృప్తిగా ఉంది.', stars: 4 },
+                { name: 'చ. వెంకటేశ్వరరావు', role: 'రైతు, అనకాపల్లి జిల్లా', text: 'మా వరి పొలాలకు 6.5" హై-యీల్డ్ బోర్ అవసరమైంది. JMJ టీమ్ ముందు సైంటిఫిక్ సర్వే చేసి మంచి నీటి జాడ గ్యారంటీ ఇచ్చారు. 420 అడుగులకు అద్భుతమైన నీటి ప్రవాహం దొరికింది. ఇప్పుడు మా పొలమంతా ఏడాది పొడవునా నీరందుతంది!', stars: 5 },
+                { name: 'జి. సురేష్ బాబు', role: 'అపార్ట్‌మెంట్ బిల్డర్, చోడవరం', text: '3 అంతస్తుల అపార్ట్‌మెంట్ కు 4.5" బోర్ వేయించాము. భవనాల మధ్య తక్కువ స్థలంలో వారి చిన్న రిగ్ తో పని చాలా సులభంగా చేశారు. నీటి నాణ్యత చాలా బాగుంది. తదుపరి ప్రాజెక్ట్‌కు కూడా JMJ నే పిలుస్తాం.', stars: 5 }
             ],
             gallery_title: 'మా పని తీరు',
             gallery: [
@@ -244,7 +252,9 @@ export const translations = {
             service_45: '4.5 అంగుళాలు (ఇంటికి)',
             service_65: '6.5 అంగుళాలు (వ్యవసాయం/కమర్షియల్)',
             submit: 'పంపండి',
-            success: 'ధన్యవాదాలు! మా టీమ్ మిమ్మల్ని త్వరలో సంప్రదిస్తారు.'
+            success: 'ధన్యవాదాలు! మా టీమ్ మిమ్మల్ని త్వరలో సంప్రదిస్తారు.',
+            address: 'రమణయ్య పేట, RCM చర్చి దగ్గర, చోడవరం, అనకాపల్లి జిల్లా, 531036',
+            map_link: 'https://maps.app.goo.gl/Fr11MN8xi2qrP1YH7'
         },
         about: {
             title: 'JMJ బోర్ వెల్స్ గురించి',

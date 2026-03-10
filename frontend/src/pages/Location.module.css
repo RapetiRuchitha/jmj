@@ -35,6 +35,25 @@
     flex-shrink: 0;
 }
 
+.directionsBtn {
+    display: inline-flex;
+    align-items: center;
+    margin-top: var(--space-4);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-accent);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.directionsBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
 .mapPanel {
     composes: infoPanel;
     flex: 1;

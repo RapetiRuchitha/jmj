@@ -66,7 +66,7 @@ const Footer = () => {
                     <h4 className={s.colTitle}>{language === 'en' ? 'Get in Touch' : 'సంప్రదించండి'}</h4>
                     <div className={s.contactItem}>
                         <MapPin size={20} className={s.contactIcon} />
-                        <span className={s.contactText}>1-93, Near RCM Church,<br />Chodavaram, 531034</span>
+                        <span className={s.contactText}>{t('location', 'address')}</span>
                     </div>
                     <div className={s.contactItem}>
                         <Phone size={18} className={s.contactIcon} />
