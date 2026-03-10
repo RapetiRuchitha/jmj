@@ -70,7 +70,7 @@ const Footer = () => {
                     </div>
                     <div className={s.contactItem}>
                         <Phone size={18} className={s.contactIcon} />
-                        <a href="tel:+919100111643" className={s.contactLink}>+91 91001 11643</a>
+                        <a href="tel:+916281656684" className={s.contactLink}>+91 62816 56684</a>
                     </div>
                     <div className={s.contactItem}>
                         <Mail size={18} className={s.contactIcon} />
@@ -79,7 +79,7 @@ const Footer = () => {
                     <div className={s.contactItem}>
                         <Clock size={18} className={s.contactIcon} />
                         <span className={s.contactText}>
-                            {language === 'en' ? 'Mon - Sun: 6:00 AM – 9:00 PM' : 'సోమ - ఆది: ఉ. 6:00 – రా. 9:00'}
+                            {language === 'en' ? 'Mon - Sun: 9:00 AM – 8:00 PM' : 'సోమ - ఆది: ఉ. 9:00 – రా. 8:00'}
                         </span>
                     </div>
                 </div>
@@ -119,7 +119,7 @@ const Footer = () => {
                                     <h4>Data Security</h4>
                                     <p>We take reasonable measures to protect your personal information from unauthorized access, alteration, or disclosure.</p>
                                     <h4>Contact</h4>
-                                    <p>For questions about this policy, contact us at <strong>jmjborewell@gmail.com</strong> or call <strong>+91 91001 11643</strong>.</p>
+                                    <p>For questions about this policy, contact us at <strong>jmjborewell@gmail.com</strong> or call <strong>+91 62816 56684</strong>.</p>
                                 </>
                             ) : (
                                 <>
@@ -131,7 +131,7 @@ const Footer = () => {
                                     <h4>డేటా భద్రత</h4>
                                     <p>మీ వ్యక్తిగత సమాచారాన్ని అనధికార యాక్సెస్ నుండి రక్షించడానికి మేము సహేతుక చర్యలు తీసుకుంటాము.</p>
                                     <h4>సంప్రదించండి</h4>
-                                    <p>ఈ విధానం గురించి ప్రశ్నలకు, <strong>jmjborewell@gmail.com</strong> లేదా <strong>+91 91001 11643</strong>కు కాల్ చేయండి.</p>
+                                    <p>ఈ విధానం గురించి ప్రశ్నలకు, <strong>jmjborewell@gmail.com</strong> లేదా <strong>+91 62816 56684</strong>కు కాల్ చేయండి.</p>
                                 </>
                             )}
                         </div>
