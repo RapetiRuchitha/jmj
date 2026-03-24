@@ -285,25 +285,40 @@ const Home = () => {
               alt={heroImages[slideIndex].alt}
             />
           </AnimatePresence>
+
+          {/* Overlay, arrows & dots inside sliderBg — scoped to image strip on
+              mobile (position:relative aspect-ratio:3/2), full hero on desktop
+              (position:absolute inset:0). */}
+          <div className={s.overlay} />
+
+          <button
+            className={`${s.carouselArrow} ${s.carouselArrowLeft}`}
+            onClick={prevSlide}
+            aria-label="Previous slide"
+          >
+            <ChevronLeft size={28} />
+          </button>
+          <button
+            className={`${s.carouselArrow} ${s.carouselArrowRight}`}
+            onClick={nextSlide}
+            aria-label="Next slide"
+          >
+            <ChevronRight size={28} />
+          </button>
+
+          <div className={s.indicators}>
+            {heroImages.map((_, i) => (
+              <button
+                key={i}
+                className={`${s.dot} ${i === slideIndex ? s.dotActive : ""}`}
+                onClick={() => goToSlide(i)}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
-        <div className={s.overlay} />
 
-        {/* Carousel Navigation Arrows */}
-        <button
-          className={`${s.carouselArrow} ${s.carouselArrowLeft}`}
-          onClick={prevSlide}
-          aria-label="Previous slide"
-        >
-          <ChevronLeft size={28} />
-        </button>
-        <button
-          className={`${s.carouselArrow} ${s.carouselArrowRight}`}
-          onClick={nextSlide}
-          aria-label="Next slide"
-        >
-          <ChevronRight size={28} />
-        </button>
-
+        {/* Hero text — centered over the image on both mobile and desktop */}
         <motion.div
           className={s.heroContent}
           initial={{ opacity: 0, scale: 0.95 }}
@@ -325,17 +340,6 @@ const Home = () => {
             </button>
           </div>
         </motion.div>
-
-        <div className={s.indicators}>
-          {heroImages.map((_, i) => (
-            <button
-              key={i}
-              className={`${s.dot} ${i === slideIndex ? s.dotActive : ""}`}
-              onClick={() => goToSlide(i)}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
       </section>
 
       {/* ===== WHY CHOOSE US ===== */}

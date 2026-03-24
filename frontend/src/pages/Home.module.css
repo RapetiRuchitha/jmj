@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   height: 100vh;
-  min-height: 600px;
+  min-height: 500px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -12,6 +12,8 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
+  background: #0b1120;
 }
 
 .slideImage {
@@ -19,18 +21,17 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   will-change: transform;
-  object-position: center;
+  display: block;
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(11, 17, 32, 0.55) 0%,
-    rgba(11, 17, 32, 0.75) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(11, 17, 32, 0.55) 0%,
+      rgba(11, 17, 32, 0.75) 100%);
   z-index: 1;
 }
 
@@ -122,11 +123,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    135deg,
-    rgba(99, 102, 241, 0.2),
-    rgba(6, 182, 212, 0.2)
-  );
+  background: linear-gradient(135deg,
+      rgba(99, 102, 241, 0.2),
+      rgba(6, 182, 212, 0.2));
   color: var(--color-accent-light);
   flex-shrink: 0;
 }
@@ -154,11 +153,9 @@
 .translatePromptButton {
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-full);
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-accent)
-  );
+  background: linear-gradient(135deg,
+      var(--color-primary),
+      var(--color-accent));
   color: white;
   font-size: var(--font-size-sm);
   font-weight: 700;
@@ -201,11 +198,9 @@
 }
 
 .btnPrimary {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-accent)
-  );
+  background: linear-gradient(135deg,
+      var(--color-primary),
+      var(--color-accent));
   color: white;
   font-weight: 600;
   font-size: var(--font-size-base);
@@ -394,12 +389,10 @@
   inset: 0;
   border-radius: var(--radius-xl);
   padding: 1px;
-  background: linear-gradient(
-    135deg,
-    transparent,
-    var(--color-primary-glow),
-    transparent
-  );
+  background: linear-gradient(135deg,
+      transparent,
+      var(--color-primary-glow),
+      transparent);
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -484,11 +477,9 @@
   position: absolute;
   inset: -1px;
   border-radius: var(--radius-xl);
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-accent)
-  );
+  background: linear-gradient(135deg,
+      var(--color-primary),
+      var(--color-accent));
   z-index: -1;
 }
 
@@ -509,11 +500,9 @@
 .statValue {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 900;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary-light),
-    var(--color-accent)
-  );
+  background: linear-gradient(135deg,
+      var(--color-primary-light),
+      var(--color-accent));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -610,11 +599,9 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-accent)
-  );
+  background: linear-gradient(135deg,
+      var(--color-primary),
+      var(--color-accent));
   color: white;
   font-weight: 700;
   font-size: var(--font-size-lg);
@@ -867,11 +854,9 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    var(--color-primary),
-    var(--color-accent)
-  );
+  background: linear-gradient(180deg,
+      var(--color-primary),
+      var(--color-accent));
   border-radius: 4px 0 0 4px;
 }
 
@@ -954,6 +939,111 @@
     flex: 0 0 36px;
   }
 
+  /*
+   * MOBILE HERO — overlay style (same as desktop):
+   * Hero = landscape 3:2 box matching the lorry images exactly → zero cropping.
+   * sliderBg fills the box absolutely.
+   * heroContent is centered over the image (same premium overlay look).
+   */
+  .hero {
+    height: auto !important;
+    aspect-ratio: 3 / 2;
+    min-height: 0 !important;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .sliderBg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: #0b1120;
+  }
+
+  /* Perfect fill: 3:2 container + 3:2 images = no cropping */
+  .slideImage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  /* Darker overlay - set pointer-events:none so clicks go through to arrows */
+  .overlay {
+    background: linear-gradient(180deg, rgba(11, 17, 32, 0.35) 0%, rgba(11, 17, 32, 0.80) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Text overlaid on image — compact spacing to fit the shorter hero */
+  .heroContent {
+    position: relative;
+    z-index: 2;
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: none;
+  }
+
+  .badge {
+    margin-bottom: 0.35rem;
+    font-size: 0.55rem;
+    padding: 3px 8px;
+    letter-spacing: 1.5px;
+  }
+
+  .heroTitle {
+    font-size: clamp(1.4rem, 7.5vw, 2rem);
+    margin-bottom: 0.25rem;
+    line-height: 1.1;
+  }
+
+  .heroSubtitle {
+    font-size: 0.75rem;
+    line-height: 1.35;
+    margin-bottom: 0.5rem;
+  }
+
+  .heroCta {
+    gap: 0.4rem;
+  }
+
+  .btnPrimary,
+  .btnOutline {
+    font-size: 0.78rem;
+    padding: 0.45rem 0.9rem;
+  }
+
+  /* Carousel arrows — ALWAYS visible on mobile (since no hover) */
+  .carouselArrow {
+    width: 36px;
+    height: 36px;
+    opacity: 0.85 !important;
+    z-index: 10;
+    /* Ensure they stay above everything */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carouselArrowLeft {
+    left: 8px;
+  }
+
+  .carouselArrowRight {
+    right: 8px;
+  }
+
+  /* Indicators stay at bottom of hero */
+  .indicators {
+    bottom: 8px;
+  }
+
   .missionGrid {
     grid-template-columns: 1fr;
     gap: var(--space-10);
@@ -963,30 +1053,24 @@
     grid-template-columns: 1fr;
   }
 
-  .heroContent {
-    padding: var(--space-4);
-  }
-
   .section {
     padding: var(--space-16) 5%;
   }
 
-  .carouselArrow {
-    width: 40px;
-    height: 40px;
-    opacity: 0.7;
+  .galleryGrid {
+    grid-template-columns: 1fr;
   }
 
-  .hero:hover .carouselArrow {
-    opacity: 1;
+  .galleryItem {
+    height: 240px;
   }
 
-  .carouselArrowLeft {
-    left: var(--space-3);
-  }
-
-  .carouselArrowRight {
-    right: var(--space-3);
+  .missionImg {
+    height: auto;
+    min-height: 220px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
   }
 }
 
@@ -1161,7 +1245,8 @@
   }
 
   .sliderBg {
-    position: relative; /* follow image height */
+    position: relative;
+    /* follow image height */
     inset: auto;
     width: 100%;
     height: auto;
@@ -1169,16 +1254,21 @@
 
   .slideImage {
     width: 100%;
-    height: auto; /* image defines height */
-    max-height: calc(100vh - 80px); /* never exceed screen */
-    object-fit: contain; /* show entire image */
+    height: auto;
+    /* image defines height */
+    max-height: calc(100vh - 80px);
+    /* never exceed screen */
+    object-fit: contain;
+    /* show entire image */
     object-position: center;
-    background-color: #000; /* letterbox bars look clean */
+    background-color: #000;
+    /* letterbox bars look clean */
     display: block;
   }
 
   .heroContent {
-    position: static; /* sit below image */
+    position: static;
+    /* sit below image */
     transform: none;
     margin-top: var(--space-4);
     text-align: center;
@@ -1187,12 +1277,10 @@
 
   .overlay {
     /* optional: lighter overlay so image is clearer on mobile */
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.2),
-      transparent
-    );
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.2),
+        transparent);
   }
 }
 
@@ -1217,7 +1305,8 @@
 .slideImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;      /* image fills screen, cropped if needed */
+  object-fit: cover;
+  /* image fills screen, cropped if needed */
   object-position: center;
   display: block;
 }
@@ -1225,12 +1314,10 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-      to top,
+  background: linear-gradient(to top,
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0.3),
-      transparent
-    );
+      transparent);
   z-index: 1;
 }
 
