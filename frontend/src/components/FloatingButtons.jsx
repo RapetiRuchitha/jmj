@@ -6,12 +6,12 @@ import s from './FloatingButtons.module.css';
 
 export const FloatingCallButton = () => (
     <motion.a
-        href="tel:+919100111643"
+        href="tel:+919392812362"
         className={s.callBtn}
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 0.5 }}
-        aria-label="Call JMJ Borewells at +91 91001 11643"
+        aria-label="Call JMJ Borewells at +91 9392812362"
         title="Call Us"
     >
         <span className={s.tooltip}>Call Us</span>
@@ -21,7 +21,7 @@ export const FloatingCallButton = () => (
 
 export const FloatingWhatsAppButton = () => (
     <motion.a
-        href="https://wa.me/919100111643"
+        href="https://wa.me/919392812362"
         target="_blank"
         rel="noopener noreferrer"
         className={s.whatsappBtn}

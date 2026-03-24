@@ -32,7 +32,7 @@ Official website for JMJ Borewells. This is a responsive single-page web applica
 
 ## Contact Information
 
-- Phone: +91 91001 11643
+- Phone: +91 93928 12362
 - Email: jmjborewell@gmail.com
 - Address: Ramanyapeta, Near RCM Church, Chodavaram, Anakapalle District, Andhra Pradesh, 531036
 

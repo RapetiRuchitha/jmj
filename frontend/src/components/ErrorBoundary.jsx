@@ -33,7 +33,7 @@ class ErrorBoundary extends React.Component {
                         Something went wrong
                     </h1>
                     <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', maxWidth: '500px', lineHeight: 1.6 }}>
-                        We apologize for the inconvenience. Please refresh the page or contact us directly at <strong>+91 91001 11643</strong>.
+                        We apologize for the inconvenience. Please refresh the page or contact us directly at <strong>+91 93928 12362</strong>.
                     </p>
                     <button
                         onClick={() => window.location.reload()}
