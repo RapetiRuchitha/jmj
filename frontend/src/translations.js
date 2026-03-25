@@ -7,11 +7,11 @@ export const translations = {
       about: "About",
     },
     home: {
-      title: "JMJ BOREWELLS",
+      title: "JMJ Borewells",
       subtitle:
-        'Precision 4.5" & 6.5" Borewell Drilling and Specialized Pressing Services.',
+        "Precision 4.5\" & 6.5\" Borewell Drilling\nDelivering Reliable Water Solutions You Can Trust",
       owner: "Proprietor: Dadi Santhosh Kumar",
-      govt: "Govt Approved Contractor | Vizag Region",
+      govt: "GOVT. APPROVED CONTRACTOR • VIZAG REGION",
       cta: "Request Survey",
       hero_visit: "Visit Us",
       hero_services: "Services",
@@ -312,9 +312,9 @@ export const translations = {
     home: {
       title: "JMJ బోర్ వెల్స్",
       subtitle:
-        'కచ్చితమైన 4.5" & 6.5" బోర్‌వెల్ డ్రిల్లింగ్ మరియు స్పెషలిస్ట్ ప్రెస్సింగ్ సేవలు.',
+        "కచ్చితమైన 4.5\" & 6.5\" బోర్‌వెల్ డ్రిల్లింగ్\nనమ్మకమైన మరియు నాణ్యమైన నీటి పరిష్కారాలు",
       owner: "యజమాని: దాడి సంతోష్ కుమార్",
-      govt: "ప్రభుత్వ అనుమతి పొందిన కాంట్రాక్టర్ | విశాఖ రీజియన్",
+      govt: "ప్రభుత్వ అనుమతి పొందిన కాంట్రాక్టర్ • విశాఖ రీజియన్",
       cta: "సర్వే రిక్వెస్ట్",
       hero_visit: "మా అడ్రస్",
       hero_services: "సేవలు",

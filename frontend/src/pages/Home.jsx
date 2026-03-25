@@ -285,47 +285,19 @@ const Home = () => {
               alt={heroImages[slideIndex].alt}
             />
           </AnimatePresence>
-
-          {/* Overlay, arrows & dots inside sliderBg — scoped to image strip on
-              mobile (position:relative aspect-ratio:3/2), full hero on desktop
-              (position:absolute inset:0). */}
           <div className={s.overlay} />
-
-          <button
-            className={`${s.carouselArrow} ${s.carouselArrowLeft}`}
-            onClick={prevSlide}
-            aria-label="Previous slide"
-          >
-            <ChevronLeft size={28} />
-          </button>
-          <button
-            className={`${s.carouselArrow} ${s.carouselArrowRight}`}
-            onClick={nextSlide}
-            aria-label="Next slide"
-          >
-            <ChevronRight size={28} />
-          </button>
-
-          <div className={s.indicators}>
-            {heroImages.map((_, i) => (
-              <button
-                key={i}
-                className={`${s.dot} ${i === slideIndex ? s.dotActive : ""}`}
-                onClick={() => goToSlide(i)}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
         </div>
 
-        {/* Hero text — centered over the image on both mobile and desktop */}
         <motion.div
           className={s.heroContent}
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className={s.badge}>{t("home", "govt")}</div>
+          <div className={s.taglineWrap}>
+            <span className={s.heroTagline}>{t("home", "govt")}</span>
+            <div className={s.taglineDivider} />
+          </div>
           <h1 className={s.heroTitle}>{t("home", "title")}</h1>
           <p className={s.heroSubtitle}>{t("home", "subtitle")}</p>
           <div className={s.heroCta}>
@@ -336,7 +308,7 @@ const Home = () => {
               {t("location", "survey_title")}
             </button>
             <button className={s.btnOutline} onClick={() => scrollTo("about")}>
-              {t("nav", "about")}
+              {language === "en" ? "Learn More" : "మరింత తెలుసుకోండి"}
             </button>
           </div>
         </motion.div>

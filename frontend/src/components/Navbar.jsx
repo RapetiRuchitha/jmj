@@ -93,7 +93,7 @@ const Navbar = () => {
 
                 {/* Language Toggle */}
                 <button onClick={toggleLanguage} className={styles.toggleBtn} aria-label={language === 'en' ? 'Switch to Telugu' : 'Switch to English'} title={language === 'en' ? 'Switch to Telugu' : 'Switch to English'}>
-                    <Languages size={16} />
+                    <Languages size={18} />
                     {language === 'en' ? 'TE' : 'EN'}
                 </button>
 
