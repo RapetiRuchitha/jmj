@@ -22,46 +22,46 @@ import s from "./Home.module.css";
 
 const heroImages = [
   {
-    src: "images/slide1.jpeg",
+    src: "images/slide1.png",
     alt: "JMJ Borewells high-pressure drilling rig in action at Vizag",
   },
   {
-    src: "images/slide2.jpeg",
+    src: "images/slide2.png",
     alt: "Professional borewell drilling team installing casing pipes",
   },
   {
-    src: "images/slide3.jpg",
+    src: "images/slide3.png",
     alt: "6.5 inch industrial borewell drilling for agricultural use",
   },
   {
-    src: "images/slide4.jpeg",
+    src: "images/slide4.png",
     alt: "Geological water source survey at Vizag region",
   },
   {
-    src: "images/slide5.jpeg",
+    src: "images/slide5.png",
     alt: "Expert borewell drilling team in action at client site",
   },
 ];
 
 const images = [
   {
-    src: "images/slide1.jpeg",
+    src: "images/slide1.png",
     alt: "JMJ Borewells high-pressure drilling rig in action at Vizag",
   },
   {
-    src: "images/slide2.jpeg",
+    src: "images/slide2.png",
     alt: "Professional borewell drilling team installing casing pipes",
   },
   {
-    src: "images/slide3.jpg",
+    src: "images/slide3.png",
     alt: "6.5 inch industrial borewell drilling for agricultural use",
   },
   {
-    src: "images/slide4.jpg",
+    src: "images/slide4.png",
     alt: "Geological water source survey at Vizag region",
   },
   {
-    src: "images/slide5.jpg",
+    src: "images/slide5.png",
     alt: "Expert borewell drilling team in action at client site",
   },
 ];
@@ -534,7 +534,7 @@ const Home = () => {
             <div className={s.missionImgWrap}>
               <div className={s.missionImgBorder} />
               <img
-                src="images/slide3.jpg"
+                src="images/slide3.png"
                 alt="JMJ Borewells team performing borewell drilling at a client site"
                 className={s.missionImg}
                 loading="lazy"

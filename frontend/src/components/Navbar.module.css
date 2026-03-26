@@ -103,20 +103,20 @@
     gap: var(--space-1);
     padding: var(--space-2) var(--space-4);
     border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--bg-glass);
+    border: 1px solid var(--border-subtle);
     font-size: var(--font-size-xs);
     font-weight: 700;
-    color: #ffffff;
+    color: var(--text-primary);
     transition: all var(--transition-fast);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
 
 .toggleBtn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.4);
+    background: var(--bg-glass-hover);
+    color: var(--color-primary);
+    border-color: var(--border-medium);
     transform: translateY(-1px);
 }
 

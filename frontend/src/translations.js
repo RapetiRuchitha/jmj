@@ -253,7 +253,7 @@ export const translations = {
       success: "Thank you! Our technical team will contact you shortly.",
       address:
         "Ramanyapeta, Near RCM Church, Chodavaram, Anakapalle District, 531036",
-      map_link: "https://maps.app.goo.gl/Fr11MN8xi2qrP1YH7",
+      map_link: "https://www.google.com/maps/dir/?api=1&destination=17.830335,82.926578",
     },
     about: {
       title: "About JMJ Borewells",
@@ -556,7 +556,7 @@ export const translations = {
       submit: "పంపండి",
       success: "ధన్యవాదాలు! మా టీమ్ మిమ్మల్ని త్వరలో సంప్రదిస్తారు.",
       address: "రమణయ్య పేట, RCM చర్చి దగ్గర, చోడవరం, అనకాపల్లి జిల్లా, 531036",
-      map_link: "https://maps.app.goo.gl/Fr11MN8xi2qrP1YH7",
+      map_link: "https://www.google.com/maps/dir/?api=1&destination=17.830335,82.926578",
     },
     about: {
       title: "JMJ బోర్ వెల్స్ గురించి",
