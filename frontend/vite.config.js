@@ -2,10 +2,6 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-    plugins: [react()],
-    base: '/jmj/',
-    server: {
-        host: true,
-        port: 2005
-    }
+  plugins: [react()],
+  base: "/"
 })
