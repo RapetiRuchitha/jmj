@@ -15,6 +15,7 @@ const SurveyForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
+  const [serverError, setServerError] = useState("");
 
   const validate = (field, value) => {
     const errs = {};
@@ -64,69 +65,101 @@ const SurveyForm = () => {
     setErrors((prev) => ({ ...prev, [name]: fieldErrors[name] }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setTouched({ name: true, phone: true, village: true });
+    setServerError("");
     const allErrors = validate();
     setErrors(allErrors);
     if (Object.keys(allErrors).length > 0) return;
 
     setIsSubmitting(true);
+    
+    // FIX: Open tab synchronously to prevent Safari/Chrome popup blocker preventing window.open after async fetch
+    const whatsappTab = window.open('about:blank', '_blank');
 
-    const serviceLabel =
-      formData.service === "4.5 inch"
-        ? language === "en"
-          ? "4.5 Inch (Residential)"
-          : "4.5 \u0C05\u0C02\u0C17\u0C41\u0C33\u0C3E\u0C32\u0C41 (\u0C07\u0C02\u0C1F\u0C3F\u0C15\u0C3F)"
-        : formData.service === "6.5 inch"
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const response = await fetch(`${apiUrl}/api/survey`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      if (!response.ok) {
+        throw new Error('API request failed');
+      }
+
+      const serviceLabel =
+        formData.service === "4.5 inch"
           ? language === "en"
-            ? "6.5 Inch (Heavy Duty)"
-            : "6.5 \u0C05\u0C02\u0C17\u0C41\u0C33\u0C3E\u0C32\u0C41 (\u0C35\u0C4D\u0C2F\u0C35\u0C38\u0C3E\u0C2F\u0C02)"
-          : language === "en"
-            ? "Borewell Pressing"
-            : "\u0C2C\u0C4B\u0C30\u0C4D\u200C\u0C35\u0C46\u0C32\u0C4D \u0C2A\u0C4D\u0C30\u0C46\u0C38\u0C4D\u0C38\u0C3F\u0C02\u0C17\u0C4D";
+            ? "4.5 Inch (Residential)"
+            : "4.5 అంగుళాలు (ఇంటికి)"
+          : formData.service === "6.5 inch"
+            ? language === "en"
+              ? "6.5 Inch (Heavy Duty)"
+              : "6.5 అంగుళాలు (వ్యవసాయం)"
+            : language === "en"
+              ? "Borewell Pressing"
+              : "బోర్‌వెల్ ప్రెస్సింగ్";
 
-    const lines =
-      language === "en"
-        ? [
-            "💧 *New Borewell Survey Request*",
-            "",
-            "👤 *Name:* " + formData.name,
-            "📱 *Phone:* " + formData.phone,
-            "📍 *Village / Location:* " + formData.village,
-            "🛠️ *Service Required:* " + serviceLabel,
-            "",
-            "_Sent from the JMJ Borewells website_",
-          ]
-        : [
-            "💧 *కొత్త బోర్‌వెల్ సర్వే రిక్వెస్ట్*",
-            "",
-            "👤 *పేరు:* " + formData.name,
-            "📱 *ఫోన్:* " + formData.phone,
-            "📍 *గ్రామం / ప్రాంతం:* " + formData.village,
-            "🛠️ *అవసరమైన సేవ:* " + serviceLabel,
-            "",
-            "_JMJ Borewells వెబ్‌సైట్ నుండి పంపబడింది_",
-          ];
+      const lines =
+        language === "en"
+          ? [
+              "💧 *New Borewell Survey Request*",
+              "",
+              "👤 *Name:* " + formData.name,
+              "📱 *Phone:* " + formData.phone,
+              "📍 *Village / Location:* " + formData.village,
+              "🛠️ *Service Required:* " + serviceLabel,
+              "",
+              "_Sent from the JMJ Borewells website_",
+            ]
+          : [
+              "💧 *కొత్త బోర్‌వెల్ సర్వే రిక్వెస్ట్*",
+              "",
+              "👤 *పేరు:* " + formData.name,
+              "📱 *ఫోన్:* " + formData.phone,
+              "📍 *గ్రామం / ప్రాంతం:* " + formData.village,
+              "🛠️ *అవసరమైన సేవ:* " + serviceLabel,
+              "",
+              "_JMJ Borewells వెబ్‌సైట్ నుండి పంపబడింది_",
+            ];
 
-    const message = lines.join("\n");
-    const whatsappUrl =
-      "https://wa.me/919392812362?text=" + encodeURIComponent(message);
+      const message = lines.join("\n");
+      const whatsappUrl =
+        "https://wa.me/919392812362?text=" + encodeURIComponent(message);
 
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      // Successfully resolved backend; redirect the synchronously opened tab
+      whatsappTab.location.href = whatsappUrl;
 
-    setSubmitted(true);
-    setFormData({ name: "", phone: "", village: "", service: "4.5 inch" });
-    setTouched({});
-    setErrors({});
-    setIsSubmitting(false);
-    setTimeout(() => setSubmitted(false), 6000);
+      setSubmitted(true);
+      setFormData({ name: "", phone: "", village: "", service: "4.5 inch" });
+      setTouched({});
+      setErrors({});
+      
+      setTimeout(() => setSubmitted(false), 6000);
+    } catch (err) {
+      console.error("Failed to submit to backend:", err);
+      whatsappTab.close(); // Close the blank tab if api fails
+      setServerError(language === "en" ? "Failed to submit request. Please try again." : "అభ్యర్థన విఫలమైంది. దయచేసి మళ్లీ ప్రయత్నించండి.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className={s.panel}>
       <h3 className={s.title}>{t("location", "survey_title")}</h3>
       <p className={s.desc}>{t("location", "survey_desc")}</p>
+
+      {serverError && (
+        <div style={{ color: "var(--color-danger, #ef4444)", padding: "12px", background: "rgba(239, 68, 68, 0.1)", borderRadius: "var(--radius-md)", marginBottom: "16px", fontSize: "14px", fontWeight: "500", border: "1px solid rgba(239, 68, 68, 0.2)" }}>
+           {serverError}
+        </div>
+      )}
 
       {submitted ? (
         <div className={s.success}>
