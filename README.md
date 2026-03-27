@@ -4,7 +4,7 @@ Official website for JMJ Borewells. This is a responsive single-page web applica
 
 ## Live Website
 
-[https://RapetiRuchitha.github.io/jmj/](https://RapetiRuchitha.github.io/jmj/)
+[https://jmjborewells.page](https://jmjborewells.page)
 
 ## Preview
 
@@ -18,17 +18,16 @@ Official website for JMJ Borewells. This is a responsive single-page web applica
 
 ## Features
 
-- Responsive single-page layout
-- English and Telugu language support
-- Dark and light theme toggle
-- Hero image slider
-- Services section with pricing details
-- Location section with Google Maps
-- About section with company overview
-- FAQ section
-- Customer testimonials
-- Floating Call and WhatsApp buttons
-- WhatsApp-based enquiry form
+- **Responsive Single-Page Layout:** Modern UI/UX built with React and Vite.
+- **Bilingual Support:** Full English and Telugu language toggle.
+- **Theme Support:** Dark and light mode configurations dynamically driven by CSS variables.
+- **Performance Optimized:** Preloaded LCP hero images, optimized animations, and glassmorphism UI.
+- **Secure Lead Capture API:** The `Reach Us` survey form securely stores leads into an SQLite database via a protected Express backend before dynamically launching a synchronous WhatsApp chat popup.
+- **API Security:** The backend is hardened with:
+  - `express-rate-limit` to prevent spam and DDOS attacks.
+  - Strict Cross-Origin Resource Sharing (CORS) restricted to your production and dev domains.
+  - `express-validator` to strictly type-check and sanitize input payloads against Cross-Site Scripting (XSS) and SQL Injection vectors.
+  - Reverse proxy trust headers (`app.set('trust proxy', 1)`) configured for safe Vercel/Nginx deployments.
 
 ## Contact Information
 
@@ -39,106 +38,54 @@ Official website for JMJ Borewells. This is a responsive single-page web applica
 ## Tech Stack
 
 ### Frontend
-
-- React
+- React 18
 - Vite
 - Framer Motion
 - Lucide React
-- React Icons
 - CSS Modules
 
 ### Backend
-
-- Express
-- CORS
-
-## Project Structure
-
-```text
-jmj/
-├── English_version.png
-├── Telugu_version.png
-├── backend/
-│   ├── package.json
-│   └── server.js
-├── frontend/
-│   ├── public/
-│   │   ├── manifest.json
-│   │   └── images/
-│   │       ├── logo.png
-│   │       ├── logo1.png
-│   │       ├── slide1.jpeg
-│   │       ├── slide2.jpeg
-│   │       ├── slide3.jpg
-│   │       └── slide4.jpg
-│   ├── src/
-│   │   ├── App.jsx
-│   │   ├── App.module.css
-│   │   ├── LanguageContext.jsx
-│   │   ├── main.jsx
-│   │   ├── translations.js
-│   │   ├── components/
-│   │   │   ├── ErrorBoundary.jsx
-│   │   │   ├── Faq.jsx
-│   │   │   ├── Faq.module.css
-│   │   │   ├── FloatingButtons.jsx
-│   │   │   ├── FloatingButtons.module.css
-│   │   │   ├── Footer.jsx
-│   │   │   ├── Footer.module.css
-│   │   │   ├── Navbar.jsx
-│   │   │   ├── Navbar.module.css
-│   │   │   ├── SurveyForm.jsx
-│   │   │   └── SurveyForm.module.css
-│   │   ├── pages/
-│   │   │   ├── About.jsx
-│   │   │   ├── About.module.css
-│   │   │   ├── Home.jsx
-│   │   │   ├── Home.module.css
-│   │   │   ├── Location.jsx
-│   │   │   ├── Location.module.css
-│   │   │   ├── Services.jsx
-│   │   │   └── Services.module.css
-│   │   └── styles/
-│   │       ├── global.css
-│   │       └── variables.css
-│   ├── index.html
-│   ├── package.json
-│   └── vite.config.js
-└── README.md
-```
+- Node.js & Express
+- SQLite (Local persistent storage via `leads.db`)
+- `express-rate-limit`
+- `express-validator`
+- `cors`
 
 ## Local Development
 
 ### Prerequisites
-
 - Node.js 18 or later
 - npm
 
-### Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Runs on: http://localhost:2005
-
-### Backend
+### 1. Setting Up the Backend
+The backend serves the API on port `3000` and creates an SQLite database file `leads.db`.
 
 ```bash
 cd backend
 npm install
 npm start
 ```
+Runs on: `http://localhost:3000`
 
-Runs on: http://localhost:3000
+### 2. Setting Up the Frontend
+The frontend requires the API URL to be configured to talk to the backend. Create a `.env` file inside the `frontend/` directory (or configure Vercel environment variables in production):
 
-## Notes
+```env
+# frontend/.env
+VITE_API_URL=http://localhost:3000
+```
 
-- The current enquiry flow opens WhatsApp with a prefilled message.
-- Telugu is the default language in the app.
-- Main website content is managed in `frontend/src/translations.js`.
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Runs on: `http://localhost:5173` (or your configured Vite port)
+
+## Architecture Notes & Future Migrations
+- **WhatsApp Integration:** The current enquiry flow securely saves the user's lead into the database *first*, and upon success, synchronously redirects the user to WhatsApp with a prefilled message.
+- **Database Scalability (Important):** The backend currently uses local file-based SQLite (`leads.db`). If deployed to a serverless/ephemeral environment (like Vercel, Heroku free tier, AWS ECS), the `leads.db` file will be wiped out when the server sleeps. When migrating to full production, replace the SQLite integration with a managed PostgreSQL connection string (like Supabase, Render, or PlanetScale).
+- **Translations:** All static UI text is managed centrally in `frontend/src/translations.js`.
 
 ## License
 
