@@ -4,7 +4,7 @@ Official website for JMJ Borewells. This is a responsive single-page web applica
 
 ## Live Website
 
-[https://RapetiRuchitha.github.io/jmj/](https://RapetiRuchitha.github.io/jmj/)
+[https://jmjborewells.page](https://jmjborewells.page)
 
 ## Preview
 
